@@ -1,0 +1,2 @@
+language: microservice
+fprocess: node index.js
