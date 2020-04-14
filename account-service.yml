@@ -1,0 +1,17 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: ${OPENFAAS_URL}
+functions:
+  account-service:
+    lang: microservice
+    handler: ./account-service
+    image: ${DOCKER_USER:-localhost:5000}/account-service:0.0.1
+    environment:
+      NAME: 'Account service'
+      NEWRELIC_API_KEY: ${NEWRELIC_API_KEY}
+      NEW_RELIC_APP_NAME: ${NEWRELIC_APP_NAME}
+    annotations:
+      com.openfaas.health.http.path: "/healthz"
+      com.openfaas.health.http.initialDelay: "30s"
+

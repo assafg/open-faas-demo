@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  saml-sign:
+    lang: microservice
+    handler: ./saml-sign
+    image: ${DOCKER_USER:-localhost:5000}/saml-sign:1.1.0
+
